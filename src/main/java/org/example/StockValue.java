@@ -2,6 +2,9 @@ package org.example;
 
 import java.util.Date;
 
+/**
+ * Stock Value including name, date, notes, value, and change.
+ */
 public class StockValue {
 
 
