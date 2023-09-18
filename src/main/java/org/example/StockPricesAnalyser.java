@@ -78,6 +78,16 @@ public class StockPricesAnalyser {
 
     public String getStockAbsIncrease() {
 
+        for (Map.Entry<String, StockAbsIncrease> entry : values.entrySet()) {
+            String name = entry.getKey();
+            Double stockAbsIncreaseValue = entry.getValue().getAbsIncreaseValue();
+
+            if (stockAbsIncreaseValue != null && stockAbsIncreaseValue > absIncreaseValue) {
+                stockName = name;
+                absIncreaseValue = stockAbsIncreaseValue;
+            }
+        }
+
         if (StringUtils.isEmpty(stockName) || absIncreaseValue < 0) {
             return "nil";
         }
@@ -94,10 +104,10 @@ public class StockPricesAnalyser {
 
         Double stockAbsIncreaseValue = stockAbsIncrease.getAbsIncreaseValue();
 
-        if (stockAbsIncreaseValue != null && stockAbsIncreaseValue > absIncreaseValue) {
-            absIncreaseValue = stockAbsIncreaseValue;
-            stockName = name;
-        }
+//        if (stockAbsIncreaseValue != null && stockAbsIncreaseValue > absIncreaseValue) {
+//            absIncreaseValue = stockAbsIncreaseValue;
+//            stockName = name;
+//        }
 
         values.put(name, stockAbsIncrease);
     }
